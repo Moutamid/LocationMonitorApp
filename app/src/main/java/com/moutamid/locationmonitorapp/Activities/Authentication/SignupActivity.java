@@ -116,6 +116,13 @@ public class SignupActivity extends AppCompatActivity {
 
             return false;
 
+        } else if (password.getText().toString().length()<8) {
+         password.setError("Should be minimum 8 digit");
+         password.requestFocus();
+            Config.openKeyboard(this);
+
+            return false;
+
         } else if (!Config.isNetworkAvailable(this)) {
             Config.showToast(this, "You are not connected to network");
 
