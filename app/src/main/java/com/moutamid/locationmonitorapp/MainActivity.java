@@ -40,6 +40,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.moutamid.locationmonitorapp.Fragment.AllUserLocationFragment;
 import com.moutamid.locationmonitorapp.Fragment.AllUsersFragment;
 import com.moutamid.locationmonitorapp.Model.UserModel;
+import com.moutamid.locationmonitorapp.helper.Config;
 import com.moutamid.locationmonitorapp.helper.Constants;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         bottomBar = findViewById(R.id.bottomBar);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         getLastLocation();
-
+        Config.checkApp(MainActivity.this);
         replaceFragment(new AllUsersFragment());
         bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override

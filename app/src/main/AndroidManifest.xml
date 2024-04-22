@@ -16,9 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LocationMonitorApp"
         tools:targetApi="31">
-        <activity android:name=".Activities.OnBoarding.OnBoardingActivity"
-            android:exported="false"
-            /> <activity android:name=".Activities.Authentication.SplashActivity"
+       <activity android:name=".Activities.Authentication.SplashActivity"
             android:exported="true"
             >
 

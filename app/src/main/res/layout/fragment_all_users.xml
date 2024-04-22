@@ -16,11 +16,19 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="10sp"
         android:text="All Users" />
-
+<ImageView
+    android:id="@+id/logout_button"
+    android:layout_width="26dp"
+    android:layout_height="26dp"
+    android:layout_gravity="end"
+    android:layout_marginTop="-45dp"
+    android:rotation="270"
+    android:src="@drawable/logout" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         tools:listitem="@layout/user_layout" />
 
 </LinearLayout>

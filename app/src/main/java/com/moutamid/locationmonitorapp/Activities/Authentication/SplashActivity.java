@@ -1,12 +1,8 @@
 package com.moutamid.locationmonitorapp.Activities.Authentication;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -15,17 +11,16 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.fxn.stash.Stash;
+import com.google.firebase.auth.FirebaseAuth;
 import com.moutamid.locationmonitorapp.MainActivity;
-import com.moutamid.locationmonitorapp.Model.UserModel;
 import com.moutamid.locationmonitorapp.R;
-
-import java.util.Locale;
 
 public class SplashActivity extends AppCompatActivity {
     LinearLayout linearLayout;
     ImageView imageViewLogo;
     Animation animation;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +49,15 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     public void goToApp() {
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
+            finish();
+        } else {
+            startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            finish();
+        }
 
-                UserModel userNew = (UserModel) Stash.getObject("UserDetails", UserModel.class);
-                if (userNew != null) {
-                    startActivity(new Intent(SplashActivity.this, MainActivity.class));
-                    finish();
-                } else {
-                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                    finish();
-                }
 
     }
 
